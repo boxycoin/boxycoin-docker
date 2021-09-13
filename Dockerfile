@@ -74,7 +74,6 @@ RUN cd ${SOURCE_LOCAL_ROOT}/src && \
 ###########
 #  FINAL  #
 ###########
-
 FROM ubuntu:18.04
 LABEL maintainer="The Boy*Roy container maintainers <j@theboyroy.com>"
 
@@ -88,9 +87,9 @@ WORKDIR ${BIN_HOME}
 
 RUN useradd -m -s /bin/bash -u 1001 ${COIN}
 
-COPY --from=builder /usr/bin/${DAEMON_NAME} .
-COPY --from=builder /usr/bin/${COIN}-cli .
-COPY --from=builder /usr/bin/${COIN}-tx .
+COPY --from=builder ${BIN_HOME}/${DAEMON_NAME} .
+COPY --from=builder ${BIN_HOME}/${COIN}-cli .
+COPY --from=builder ${BIN_HOME}/${COIN}-tx .
 COPY --from=builder /usr/lib/* /usr/lib/
 
 COPY ./entrypoint.sh /usr/bin
@@ -101,7 +100,7 @@ USER ${COIN}
 RUN mkdir ${DATA_FOLDER} \
  && chmod 700 ${DATA_FOLDER}
 
-COPY ./boxycoin.conf ${WALLET_HOME}/
+COPY ./boxycoin.conf /home/${COIN}/
 
 VOLUME ${WALLET_HOME}
 

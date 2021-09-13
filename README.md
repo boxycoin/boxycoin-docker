@@ -19,4 +19,9 @@ docker build . -t <docker-hub-username>/boxycoin-core
 docker run -it -p 8332:8332 <docker-hub-username>/boxycoin-core
 ```
 
+## Running a node w/ Docker
+```shell
+docker run -it -p 8333:8333 -v /home/boxycoin/.boxycoin/:files/ boyroywax/boxycoin-core
+```
+
 ## Testing with skaffold
