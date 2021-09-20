@@ -4,7 +4,7 @@
 FROM ubuntu:18.04 as builder
 # Declare container's arguments
 ARG SOURCE_ORIGIN=https://github.com/boxycoin/boxycore.git
-ARG COMMIT=51299e87949822ea5571e02bff780f4e32729ab0
+ARG COMMIT=21bdbcb57f7a4db056155c5fb13d53b329fd99d2
 ARG SOURCE_LOCAL_ROOT=/usr/src/wallet/boxycore
 ARG DAEMON_NAME=boxycoind
 ARG DATA_FOLDER=.boxycoin
@@ -104,6 +104,6 @@ COPY ./boxycoin.conf /home/${COIN}/
 
 VOLUME ${WALLET_HOME}
 
-EXPOSE 8332 8333
+EXPOSE 21343 21344
 
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]

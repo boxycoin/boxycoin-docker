@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  wordpress:
+    image: boyroywax/boxycoin-core
+    restart: always
+    ports:
+      - 21343:21343
+      - 21344:21344
+    volumes:
+      - ./files:/home/boxycoin/.boxycoin
+volumes:
+  files: {}
